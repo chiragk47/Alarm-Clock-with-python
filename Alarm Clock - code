@@ -1,0 +1,23 @@
+## import the libraries
+from datetime import datetime
+from playsound import playsound
+
+## input the time of alarm
+clock = input('Enter the time of alarm you want to set\n It should be in HH:MM:SS\n ')
+
+## slice the time according to hours, minutes and seconds
+hour = clock[0:2]  ## HH:MM:SS (starting from 0(H), go to 1(H) excluding 2(:)
+minutes = clock[3:5]  ## HH:MM:SS (starting from 3(M), go to 4(M) excluding 5(:)
+seconds = clock[6:8] ## HH:MM:SS (starting from 6(S), go to 7(S)
+
+while True:
+    current = datetime.now()
+    current_hour = current.strftime('%H') ## strftime -- it returns string reprensting date and time, here H means hours
+    current_min = current.strftime('%M') ## M means minutes
+    current_sec = current.strftime('%S') ## S means seconds
+
+    if(hour == current_hour):
+        if(minutes == current_min):
+            if(seconds == current_sec):
+                playsound('Alarm sound effect.mp3')
+                break
